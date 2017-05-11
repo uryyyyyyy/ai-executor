@@ -1,14 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Router } from 'react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
 import {Routes} from "./Routes";
-
-const history = createBrowserHistory()
+import {HashRouter} from "react-router-dom";
 
 ReactDOM.render(
-  <Router history={history}>
+  <HashRouter>
     <Routes />
-  </Router>
+  </HashRouter>
   , document.getElementById('app')
 );
