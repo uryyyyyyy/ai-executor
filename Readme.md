@@ -1,20 +1,17 @@
 
-## React-redux-sample
+## AI executor
 
-minimal sample implementation
+Googleなどが出しているAPIを手軽に触れるようにしてみるツール
 
 ## requirement
 
 - NodeJS 7.X~
-- Chrome Browser (or fetch-API implemented browser)
 
 ## setup
 
 `npm install`
 
 ## build
-
-bundle alljs using webpack
 
 `npm run build`
 

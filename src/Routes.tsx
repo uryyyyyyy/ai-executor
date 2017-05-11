@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Switch } from 'react-router';
 import {Link, Route} from 'react-router-dom';
-import {Counter} from './counter/Counter';
+import {VisionAPI} from './apis/google/VisionAPI';
 import NotFound from './NotFound';
-import {RecruitProofreading} from "./counter/RecruitProofreading";
+import {Proofreading} from "./apis/recruit/Proofreading";
+import {TextSuggest} from './apis/recruit/TextSuggest';
 
 export class Routes extends React.Component<{}, {}> {
 
@@ -11,11 +12,13 @@ export class Routes extends React.Component<{}, {}> {
     return (
       <div>
         <h1>AI Executor</h1>
-        <li><Link to='/google-label' >Google Vision API (LABEL DETECTION)</Link></li>
+        <li><Link to='/google-vision' >Google Vision API</Link></li>
         <li><Link to='/recruit-proofreading' >Recruit Proofreading</Link></li>
+        <li><Link to='/recruit-textSuggest' >Recruit textSuggest</Link></li>
         <Switch>
-          <Route exact path='/google-label' component={Counter} />
-          <Route exact path='/recruit-proofreading' component={RecruitProofreading} />
+          <Route exact path='/google-vision' component={VisionAPI} />
+          <Route exact path='/recruit-proofreading' component={Proofreading} />
+          <Route exact path='/recruit-textSuggest' component={TextSuggest} />
           <Route component={NotFound}/>
         </Switch>
       </div>

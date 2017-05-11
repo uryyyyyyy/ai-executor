@@ -5,13 +5,24 @@ interface State {
   result: string;
   apiKey: string;
   resultCount: number;
+  mode: string;
 }
 
-export class Counter extends React.Component<any, State> {
+const modes = [
+  {label: 'LABEL_DETECTION', value: 'LABEL_DETECTION'},
+  {label: 'TEXT_DETECTION', value: 'TEXT_DETECTION'},
+  {label: 'FACE_DETECTION', value: 'FACE_DETECTION'},
+  {label: 'LANDMARK_DETECTION', value: 'LANDMARK_DETECTION'},
+  {label: 'LOGO_DETECTION', value: 'LOGO_DETECTION'},
+  {label: 'SAFE_SEARCH_DETECTION', value: 'SAFE_SEARCH_DETECTION'},
+  {label: 'IMAGE_PROPERTIES', value: 'IMAGE_PROPERTIES'},
+]
+
+export class VisionAPI extends React.Component<any, State> {
 
   constructor(props: any) {
     super(props)
-    this.state = {fileBase64 : undefined, result: '', apiKey: '', resultCount: 1}
+    this.state = {fileBase64 : undefined, result: '', apiKey: '', resultCount: 1, mode: 'LABEL_DETECTION'}
   }
 
   fileChange = (e: any) => {
@@ -56,7 +67,7 @@ export class Counter extends React.Component<any, State> {
       },
       "features": [
         {
-          "type": "LABEL_DETECTION",
+          "type": "${this.state.mode}",
           "maxResults": ${this.state.resultCount}
         }
       ]
@@ -79,10 +90,16 @@ export class Counter extends React.Component<any, State> {
     }
   }
 
+  changeMode = (e: any) => {
+    const target: HTMLInputElement = e.target as HTMLInputElement;
+    this.setState({mode: target.value})
+  }
+
   render() {
     return (
       <div>
-        <h2>Google Vision API (LABEL DETECTION)</h2>
+        <h2>Google Vision API</h2>
+        <a href='https://cloud.google.com/vision/'>https://cloud.google.com/vision/</a>
         <div>
           <h3>ファイル選択</h3>
           <input type="file" name="myFile" onChange={this.fileChange}/>
@@ -90,6 +107,12 @@ export class Counter extends React.Component<any, State> {
         <div>
           <h3>ファイル確認</h3>
           {(this.state.fileBase64 === undefined) ? null : <img src={this.state.fileBase64} />}
+        </div>
+        <div>
+          <h3>スタイル</h3>
+          <select value={this.state.mode} onChange={this.changeMode} >
+            {modes.map(v => <option value={v.value} key={v.value}>{v.label}</option>)}
+          </select>
         </div>
         <div>
           <h3>取得する件数</h3>
