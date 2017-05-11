@@ -1,0 +1,41 @@
+{
+  "name": "ai-executor",
+  "version": "1.0.0",
+  "description": "",
+  "author": "uryyyyyyy",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --colors --config ./webpack.config.dev.js",
+    "build:prod": "webpack --config ./webpack.config.prod.js",
+    "test:unit": "karma start karma.conf.js",
+    "test:all": "karma start karma.conf.js **/*.spec.tsx **/*.spec.ts",
+    "server": "node dev-server.js"
+  },
+  "devDependencies": {
+    "@types/enzyme": "2.8.0",
+    "@types/jasmine": "2.5.47",
+    "@types/react": "15.0.24",
+    "@types/react-dom": "15.5.0",
+    "@types/react-redux": "4.4.38",
+    "@types/react-router-dom": "4.0.4",
+    "enzyme": "2.8.2",
+    "express": "4.15.2",
+    "fetch-mock": "5.10.0",
+    "jasmine-core": "2.6.1",
+    "karma": "1.7.0",
+    "karma-chrome-launcher": "2.1.1",
+    "karma-jasmine": "1.1.0",
+    "karma-mocha-reporter": "2.2.3",
+    "karma-webpack": "2.0.3",
+    "react-test-renderer": "15.5.4",
+    "ts-loader": "2.0.3",
+    "typescript": "2.3.2",
+    "webpack": "2.5.1"
+  },
+  "dependencies": {
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-redux": "5.0.4",
+    "react-router-dom": "4.1.1"
+  }
+}
