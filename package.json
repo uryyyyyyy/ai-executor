@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --colors --config ./webpack.config.dev.js",
+    "build:watch": "webpack --colors --watch --config ./webpack.config.dev.js",
     "build:prod": "webpack --config ./webpack.config.prod.js",
     "test:unit": "karma start karma.conf.js",
     "test:all": "karma start karma.conf.js **/*.spec.tsx **/*.spec.ts",
